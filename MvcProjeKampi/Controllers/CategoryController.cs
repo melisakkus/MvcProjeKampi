@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,15 @@ namespace MvcProjeKampi.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Categoryt
         public ActionResult Index()
         {
             return View();
+        }
+        CategoryManager categoryManager = new CategoryManager();
+        public ActionResult GetCategoryList()
+        {
+            var categoryValues = categoryManager.GetAllBL();
+            return View(categoryValues);
         }
     }
 }
