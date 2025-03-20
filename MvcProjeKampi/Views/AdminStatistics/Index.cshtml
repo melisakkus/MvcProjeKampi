@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<div class="text-center">
+    <h4>İstatistikler</h4>
+</div>
+<br />
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-4 col-12">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>@ViewBag.categoryCount</h3>
+                <p>Toplam Kategori Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-12">
+        <!-- small box -->
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>@ViewBag.headingCountWithSoftware</h3>
+                <p>"Yazılım" Kategorisine Ait Başlık Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-4 col-12">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>@ViewBag.writerNameCountWithA</h3>
+                <p>Yazar Adında 'a' Harfi Geçen Yazar Sayısı</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+<!-- Second Row -->
+<div class="row">
+    <div class="col-lg-6 col-12">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>@ViewBag.differenceBtTrueFalseCategory</h3>
+                <p>Durumu "True" Olan Kategoriler İle "False" Olan Kategoriler Arasındaki Sayısal Fark</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-6 col-12">
+        <!-- small box -->
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3>@ViewBag.maxCategory.CategoryName</h3>
+                <p>En Fazla Başlığa Sahip Kategori Adı</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->

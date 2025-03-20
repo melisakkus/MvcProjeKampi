@@ -38,6 +38,39 @@ namespace MvcProjeKampi.Controllers
             }
             else
             {
+                foreach (var errors in result.Errors)
+                {
+                    ModelState.AddModelError(errors.PropertyName, errors.ErrorMessage);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var category = categoryManager.GetById(id);
+            categoryManager.RemoveCategory(category);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateCategory(int id)
+        {
+            var category = categoryManager.GetById(id);
+            return View(category);
+        }
+        [HttpPost]
+        public ActionResult UpdateCategory(Category model)
+        {
+            CategoryValidator validator = new CategoryValidator();
+            ValidationResult result = validator.Validate(model);
+            if (result.IsValid)
+            {
+                categoryManager.CategoryUpdate(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
                 foreach(var errors in result.Errors)
                 {
                     ModelState.AddModelError(errors.PropertyName, errors.ErrorMessage);
