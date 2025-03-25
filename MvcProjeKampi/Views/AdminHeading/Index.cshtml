@@ -37,13 +37,16 @@
                             <th style="width: 20%">
                                 Başlık Adı
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 10%">
                                 Oluşturan Yazar
                             </th>
-                            <th style="width: 8%" class="text-center">
+                            <th style="width: 10%" class="text-center">
                                 Kategori
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 10%">
+                                Durum
+                            </th>
+                            <th style="width: 15%">
                             </th>
                         </tr>
                     </thead>
@@ -77,24 +80,27 @@
                             }
 
                             <tr>
+                                <td>@count</td>
                                 <td>
-                                    @count
-                                </td>
-                                <td>
-                                    <a>
-                                        @item.HeadingName
-                                    </a>
+                                    <a>@item.HeadingName</a>
                                     <br />
-                                    <small>
-                                        @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))
-                                    </small>
+                                    <small>@(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))</small>
                                 </td>
                                 <td>
                                     <img alt="Avatar" class="table-avatar img-fluid" src="@item.Writer.WriterImage" style="width:75px; height:75px; border-radius: 50%;">
-
                                 </td>
                                 <td class="project-state">
                                     <span class="@colour">@item.Category.CategoryName</span>
+                                </td>
+                                <td>
+                                    @if (item.HeadingStatus == true)
+                                    {
+                                        <span class="badge badge-light">@item.HeadingStatus</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">@item.HeadingStatus</span>
+                                    }
                                 </td>
                                 <td class="project-actions text-right">
                                     <a class="btn btn-primary btn-sm" href="/AdminContent/ContentByHeading?headingId=@item.HeadingId">
@@ -102,16 +108,24 @@
                                         </i>
                                         İçerikler
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/AdminHeading/UpdateHeading/@item.HeadingId">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Sil
-                                    </a>
+                                    @if (item.HeadingStatus == true)
+                                    {
+                                        <a class="btn btn-outline-danger btn-sm" href="/AdminHeading/DeleteHeading/@item.HeadingId">
+
+                                            <i class="fas fa-minus-circle"> Pasif Yap</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-danger btn-sm" href="/AdminHeading/ActivateHeading/@item.HeadingId">
+                                            <i class="fas fa-plus-circle"> Aktif Yap</i>
+                                        </a>
+                                    }
                                 </td>
                             </tr>
                         }

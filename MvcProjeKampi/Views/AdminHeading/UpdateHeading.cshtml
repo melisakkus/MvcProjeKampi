@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "UpdateHeading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("UpdateHeading", "AdminHeading", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Başlık Id")
+        @Html.TextBoxFor(x => x.HeadingId, new { @class = "form-control" })
+        <br />
+        @Html.Label("Başlık Adı")
+        @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingName, "", new { @class = "text-danger" })
+        <br />
+        @Html.Label("Başlık Tarihi")
+        @Html.TextBoxFor(x => x.HeadingDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingDate, "", new { @class = "text-danger" })
+        <br />
+        @Html.Label("Yazar Id")
+        @Html.TextBoxFor(x => x.WriterId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterId, "", new { @class = "text-danger" })
+        <br />
+        @Html.Label("Kategori Adı")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
+        <br />
+        <div class="text-center">
+            <button class="btn btn-outline-primary">Güncelle</button>
+        </div>
+    </div>
+}
