@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IContactDal : IRepository<Contact>
+    public interface IMessageDal : IRepository<Message>
     {
-        int ContactCount();
+        int SendMessageCount();
+        int ReceivedMessageCount();
     }
 }

@@ -139,8 +139,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminAboutController.cs" />
     <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminContentController.cs" />
     <Compile Include="Controllers\AdminHeadingController.cs" />
+    <Compile Include="Controllers\AdminMessageController.cs" />
     <Compile Include="Controllers\AdminStatisticsController.cs" />
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -2312,6 +2314,12 @@
     <Content Include="Views\AdminHeading\UpdateHeading.cshtml" />
     <Content Include="Views\AdminAbout\Index.cshtml" />
     <Content Include="Views\AdminAbout\AboutPartial.cshtml" />
+    <Content Include="Views\AdminContact\Index.cshtml" />
+    <Content Include="Views\AdminContact\GetContactDetails.cshtml" />
+    <Content Include="Views\AdminContact\OptionsSidebar.cshtml" />
+    <Content Include="Views\AdminMessage\Inbox.cshtml" />
+    <Content Include="Views\AdminMessage\Sendbox.cshtml" />
+    <Content Include="Views\AdminMessage\NewMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
