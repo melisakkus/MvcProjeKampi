@@ -1,4 +1,10 @@
-﻿@model EntityLayer.Concrete.Message
+﻿
+@{
+    ViewBag.Title = "GetDraftDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model EntityLayer.Concrete.Message
 @{
     ViewBag.Title = "NewMessage";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -44,7 +50,7 @@
                 <!-- /.col -->
                 <div class="col-md-9">
 
-                    @using (Html.BeginForm("NewMessage","AdminMessage",FormMethod.Post, new {id="messageForm"}))
+                    @using (Html.BeginForm("NewMessage", "AdminMessage", FormMethod.Post, new { id = "messageForm" }))
                     {
                         <div class="card card-primary card-outline">
                             <div class="card-header">
@@ -73,10 +79,11 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
+                                    <a href="/AdminDraft/NewDraft/" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</a>
                                     <button type="button" class="btn btn-default" onclick="submitForm('/AdminDraft/NewDraft')"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
-                                    <button type="submit" class="btn btn-primary" onclick="submitForm('/AdminMessage/NewMessage')"><i class="far fa-envelope"></i> Gönder</button>
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
                                 </div>
-                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
+                                <button type="reset" class="btn btn-default" onclick="submitForm('/AdminMessage/NewMessage')"><i class="fas fa-times"></i> İptal Et</button>
                             </div>
                             <!-- /.card-footer -->
                         </div>

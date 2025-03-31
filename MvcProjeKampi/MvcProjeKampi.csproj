@@ -141,11 +141,14 @@
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminContentController.cs" />
+    <Compile Include="Controllers\AdminDraftController.cs" />
     <Compile Include="Controllers\AdminHeadingController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
+    <Compile Include="Controllers\AdminMessageTrashController.cs" />
     <Compile Include="Controllers\AdminStatisticsController.cs" />
     <Compile Include="Controllers\AdminWriterController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +176,10 @@
     <Content Include="AdminLTE-3.0.4\build\npm\DocsPublish.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Plugins.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Publish.js" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\img\bg.jpg" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\index.html" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error-404-10\readme.txt" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.min.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\alt\adminlte.components.css" />
@@ -2320,6 +2327,15 @@
     <Content Include="Views\AdminMessage\Inbox.cshtml" />
     <Content Include="Views\AdminMessage\Sendbox.cshtml" />
     <Content Include="Views\AdminMessage\NewMessage.cshtml" />
+    <Content Include="Views\AdminMessage\GetMessageDetails.cshtml" />
+    <Content Include="Views\AdminMessage\GetInBoxMessageDetails.cshtml" />
+    <Content Include="Views\AdminMessage\GetReceivedMessageDetails.cshtml" />
+    <Content Include="Views\AdminMessage\SendboxMessageDetails.cshtml" />
+    <Content Include="Views\AdminDraft\Index.cshtml" />
+    <Content Include="Views\AdminDraft\GetDraftDetails.cshtml" />
+    <Content Include="Views\AdminDraft\UpdateDraft.cshtml" />
+    <Content Include="Views\AdminMessageTrash\Index.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

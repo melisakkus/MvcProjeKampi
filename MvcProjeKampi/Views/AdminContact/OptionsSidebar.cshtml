@@ -16,13 +16,13 @@
                 <li class="nav-item active">
                     <a href="/AdminContact/Index/" class="nav-link">
                         <i class="fas fa-mail-bulk"></i> İletişim
-                        <span class="badge bg-primary float-right">@ViewBag.ContactCount</span>
+                        <span class="badge bg-success float-right">@ViewBag.ContactCount</span>
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a href="/AdminMessage/Inbox/" class="nav-link">
                         <i class="fas fa-inbox"></i> Gelen Mesajlar
-                        <span class="badge bg-primary float-right">@ViewBag.ReceivedMessageCount</span>
+                        <span class="badge bg-warning float-right">@ViewBag.ReceivedMessageCount</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -32,13 +32,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/AdminDraft/Index/" class="nav-link">
                         <i class="far fa-file-alt"></i> Taslaklar
+                        <span class="badge bg-danger float-right">@ViewBag.DraftsCount</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/AdminMessageTrash/Index" class="nav-link">
                         <i class="far fa-trash-alt"></i> Çöp
+                        <span class="badge bg-dark float-right">@ViewBag.DeletedCount</span>
                     </a>
                 </li>
             </ul>

@@ -33,14 +33,34 @@ namespace BusinessLayer.Concrete
             return _messageDal.Get(x=>x.MessageId == id);
         }
 
+        public List<Message> GetListDeleteds()
+        {
+            return _messageDal.List(x=>x.IsDeleted==true);
+        }
+
+        public List<Message> GetListDrafts()
+        {
+            return _messageDal.List(x => x.IsDraft == true);
+        }
+
+        public List<Message> GetListTrashes()
+        {
+            return _messageDal.List(x => x.IsDeleted == true);
+        }
+
         public List<Message> GetListInbox()
         {
-            return _messageDal.List(x=>x.ReceiverMail=="admin@gmail.com");
+            return _messageDal.List(x=>x.ReceiverMail=="admin@gmail.com" && x.IsDeleted == false && x.IsDraft == false);
         }
 
         public List<Message> GetListSendbox()
         {
-            return _messageDal.List(x => x.SenderMail == "admin@gmail.com");
+            return _messageDal.List(x => x.SenderMail == "admin@gmail.com" && x.IsDraft == false && x.IsDeleted==false);
+        }
+
+        public int TDraftsCount()
+        {
+            return _messageDal.DraftsCount();
         }
 
         public int TReceivedMessageCount()
@@ -56,6 +76,11 @@ namespace BusinessLayer.Concrete
         public void Update(Message message)
         {
             _messageDal.Update(message);    
+        }
+
+        public int TDeletedCount()
+        {
+            return _messageDal.DeletedCount();
         }
     }
 }

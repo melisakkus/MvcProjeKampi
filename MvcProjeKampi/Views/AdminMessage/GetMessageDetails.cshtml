@@ -1,6 +1,6 @@
-﻿@model EntityLayer.Concrete.Contact
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -39,17 +39,15 @@
                             <div class="mailbox-read-info">
                                 <h5>Konu : @Model.Subject</h5>
                                 <h6>
-                                    Gönderen : @Model.ContactUserMail
-                                    <span class="mailbox-read-time float-right">
-                                        <td class="mailbox-date">@(((DateTime)Model.ContactDate).ToString("dd-MMM-yyyy"))</td>
-                                    </span>
+                                    Gönderen : @Model.SenderMail
+                                    <span class="mailbox-read-time float-right">@Model.MessageDate</span>
                                 </h6>
                             </div>
                         </div>
                         <!-- /.mailbox-controls -->
                         <div class="mailbox-read-message">
                             <p>
-                                @Html.Raw(@Model.Message)
+                                @Model.MessageContent
                             </p>
                         </div>
                         <!-- /.mailbox-read-message -->

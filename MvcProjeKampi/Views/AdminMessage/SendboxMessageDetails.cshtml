@@ -1,6 +1,6 @@
-﻿@model EntityLayer.Concrete.Contact
+﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "SendboxMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -27,7 +27,7 @@
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Mesaj İçeriği</h3>
+                            <h3 class="card-title">Gönderilen Mesaj İçeriği</h3>
 
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -39,17 +39,15 @@
                             <div class="mailbox-read-info">
                                 <h5>Konu : @Model.Subject</h5>
                                 <h6>
-                                    Gönderen : @Model.ContactUserMail
-                                    <span class="mailbox-read-time float-right">
-                                        <td class="mailbox-date">@(((DateTime)Model.ContactDate).ToString("dd-MMM-yyyy"))</td>
-                                    </span>
+                                    Alıcı : @Model.ReceiverMail
+                                    <span class="mailbox-read-time float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</span>
                                 </h6>
                             </div>
                         </div>
                         <!-- /.mailbox-controls -->
                         <div class="mailbox-read-message">
                             <p>
-                                @Html.Raw(@Model.Message)
+                                @Html.Raw(@Model.MessageContent)
                             </p>
                         </div>
                         <!-- /.mailbox-read-message -->
@@ -58,7 +56,7 @@
                                 <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Yanıtla</button>
                                 <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Yönlendir</button>
                             </div>
-                            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</button>
+                            <a href="/AdminMessage/DeleteMessage/@Model.MessageId" button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</a>
                             <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Yazdır</button>
                         </div>
                         <!-- /.card-footer -->
@@ -74,4 +72,5 @@
     </section>
 </body>
 </html>
+
 

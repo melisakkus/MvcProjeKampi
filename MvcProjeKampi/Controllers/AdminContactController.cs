@@ -30,6 +30,8 @@ namespace MvcProjeKampi.Controllers
         {
             ViewBag.SendMessageCount = messageManager.TSendMessageCount();
             ViewBag.ReceivedMessageCount = messageManager.TReceivedMessageCount();
+            ViewBag.DraftsCount = messageManager.TDraftsCount();
+            ViewBag.DeletedCount = messageManager.TDeletedCount();
             ViewBag.ContactCount = contactManager.TContactCount();
             return PartialView();
         }

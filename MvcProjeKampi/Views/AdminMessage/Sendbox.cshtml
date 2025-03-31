@@ -1,4 +1,6 @@
-﻿@model List<EntityLayer.Concrete.Message>
+﻿@using System.Web
+
+@model List<EntityLayer.Concrete.Message>
 @{
     ViewBag.Title = "Sendbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -78,64 +80,42 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-star"><a href="/AdminMessage/GetMessageDetails/@item.MessageId"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/AdminMessage/GetMessageDetails/@item.MessageId">@item.ReceiverMail</a></td>
+                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/AdminMessage/SendboxMessageDetails/@item.MessageId">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> -
-                                                @if (item.MessageContent.Length < 30)
+                                                <b>@item.Subject</b>-
+                                                @if (item.MessageContent.Length < 50)
                                                 {
-                                                    @item.MessageContent
+                                                    @Html.Raw(item.MessageContent)
                                                 }
                                                 else
                                                 {
-                                                    @(@item.MessageContent.Substring(0, 30) + "...")
+                                                    @(@item.MessageContent.Substring(0, 50) + "...")
+                                                    @*@Html.Raw(item.MessageContent).ToHtmlString().Substring(0, 50)*@
 
-                                                }
-                                            </td>
-                                            <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">5 mins ago</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                            <!-- /.table -->
-                        </div>
-                        <!-- /.mail-box-messages -->
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer p-0">
-                        <div class="mailbox-controls">
-                            <!-- Check all button -->
-                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                <i class="far fa-square"></i>
-                            </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                            </div>
-                            <!-- /.btn-group -->
-                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                            <div class="float-right">
-                                1-50/200
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+                                                    @*@Html.Raw(item.MessageContent.Substring(0, 30) + "...")*@
+                                                    }
+                                                </td>
+                                                <td class="mailbox-attachment"></td>
+                                                <td class="mailbox-date">@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
+                                            </tr>
+                                        }
+                                            </tbody>
+                                        </table>
+                                        <!-- /.table -->
+                                    </div>
+                                    <!-- /.mail-box-messages -->
                                 </div>
-                                <!-- /.btn-group -->
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.float-right -->
+                            <!-- /.card -->
                         </div>
+                        <!-- /.col -->
                     </div>
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
-    <!-- /.content-wrapper -->
-</body>
-</html>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
+                <!-- /.content-wrapper -->
+            </body>
+        </html>
 

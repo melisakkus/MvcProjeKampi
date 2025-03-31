@@ -102,6 +102,14 @@
     <Compile Include="Migrations\202503301936204_mig_addmessageclass.Designer.cs">
       <DependentUpon>202503301936204_mig_addmessageclass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503311056078_mig-update_message_class.cs" />
+    <Compile Include="Migrations\202503311056078_mig-update_message_class.Designer.cs">
+      <DependentUpon>202503311056078_mig-update_message_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503311132227_mig-contactdate.cs" />
+    <Compile Include="Migrations\202503311132227_mig-contactdate.Designer.cs">
+      <DependentUpon>202503311132227_mig-contactdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503301936204_mig_addmessageclass.resx">
       <DependentUpon>202503301936204_mig_addmessageclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503311056078_mig-update_message_class.resx">
+      <DependentUpon>202503311056078_mig-update_message_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503311132227_mig-contactdate.resx">
+      <DependentUpon>202503311132227_mig-contactdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

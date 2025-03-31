@@ -1,6 +1,6 @@
 ﻿@model EntityLayer.Concrete.Message
 @{
-    ViewBag.Title = "NewMessage";
+    ViewBag.Title = "UpdateDraft";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -30,7 +30,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-                        Yeni Mesaj Sayfası
+                        Taslak Güncelleme Sayfası
                     </h1>
                 </div>
             </div>
@@ -44,23 +44,24 @@
                 <!-- /.col -->
                 <div class="col-md-9">
 
-                    @using (Html.BeginForm("NewMessage","AdminMessage",FormMethod.Post, new {id="messageForm"}))
+                    @using (Html.BeginForm("UpdateDraft", "AdminDraft", FormMethod.Post, new { id = "messageForm" }))
                     {
                         <div class="card card-primary card-outline">
                             <div class="card-header">
-                                <h3 class="card-title">Yeni Mesaj Oluştur</h3>
+                                <h3 class="card-title">Taslak Güncelle</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <input type="hidden" name="MessageId" value="@Model.MessageId">
+
                                 <div class="form-group">
-                                    <input name="ReceiverMail" class="form-control" placeholder="Alıcı :">
+                                    <input name="ReceiverMail" value="@Model.ReceiverMail" class="form-control" placeholder="Alıcı :">
                                 </div>
                                 <div class="form-group">
-                                    <input name="Subject" class="form-control" placeholder="Konu :">
+                                    <input name="Subject" value="@Model.Subject" class="form-control" placeholder="Konu :">
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="MessageContent" id="compose-textarea" class="form-control" style="height: 300px">
-                    </textarea>
+                                    <textarea name="MessageContent" id="compose-textarea" class="form-control" style="height: 300px">@Model.MessageContent</textarea>
                                 </div>
                                 <div class="form-group">
                                     <div class="btn btn-default btn-file">
@@ -73,10 +74,10 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
-                                    <button type="button" class="btn btn-default" onclick="submitForm('/AdminDraft/NewDraft')"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
-                                    <button type="submit" class="btn btn-primary" onclick="submitForm('/AdminMessage/NewMessage')"><i class="far fa-envelope"></i> Gönder</button>
+                                    <button type="button" class="btn btn-default" onclick="submitForm('/AdminDraft/UpdateDraft')"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
+                                    <button type="submit" class="btn btn-primary" onclick="submitForm('/AdminDraft/DraftToSend')"><i class="far fa-envelope"></i> Gönder</button>
                                 </div>
-                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
+                                <button type="reset" class="btn btn-default" ><i class="fas fa-times"></i> İptal Et</button>
                             </div>
                             <!-- /.card-footer -->
                         </div>
