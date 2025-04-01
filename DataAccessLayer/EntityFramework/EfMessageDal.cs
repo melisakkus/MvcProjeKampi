@@ -31,5 +31,15 @@ namespace DataAccessLayer.EntityFramework
         {
             return _object.Count(x => x.SenderMail == "admin@gmail.com" && x.IsDeleted == false && x.IsDraft == false);
         }
+
+        public int ReadCount()
+        {
+            return _object.Count(x => x.ReceiverMail == "admin@gmail.com" && x.IsRead == true && x.IsDraft == false && x.IsDeleted == false );
+        }
+
+        public int NotReadCount()
+        {
+            return _object.Count(x => x.ReceiverMail == "admin@gmail.com" && x.IsRead == false && x.IsDraft == false && x.IsDeleted == false);
+        }
     }
 }

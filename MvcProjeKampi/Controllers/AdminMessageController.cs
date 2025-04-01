@@ -20,12 +20,30 @@ namespace MvcProjeKampi.Controllers
             messageService.Update(values);
             return RedirectToAction("Inbox");
         }
-
         public ActionResult Inbox()
         {
+            ViewBag.ReadCount = messageService.TReadCount();
+            ViewBag.NotReadCount = messageService.TNotReadCount();
             var values = messageService.GetListInbox();
             return View(values);
         }
+
+        public ActionResult InboxMessageRead(int id)
+        {
+            var value = messageService.GetById(id);
+            value.IsRead = true;
+            messageService.Update(value);
+            return RedirectToAction("Inbox");
+        }
+
+        public ActionResult InboxMessageNotRead(int id)
+        {
+            var value = messageService.GetById(id);
+            value.IsRead = false;
+            messageService.Update(value);
+            return RedirectToAction("Inbox");
+        }
+
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var value = messageService.GetById(id);

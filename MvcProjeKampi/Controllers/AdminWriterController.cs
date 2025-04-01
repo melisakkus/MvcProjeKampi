@@ -14,6 +14,7 @@ namespace MvcProjeKampi.Controllers
     public class AdminWriterController : Controller
     {
         WriterManager writerManager = new WriterManager(new EfWriterDal());
+
         public ActionResult Index()
         {
             var values = writerManager.GetList();

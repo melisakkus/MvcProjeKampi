@@ -51,23 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageFileDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISkillsDal.cs" />
     <Compile Include="Abstract\IStatisticsDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
+    <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfImageFileDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
+    <Compile Include="EntityFramework\EfSkillsDal.cs" />
     <Compile Include="EntityFramework\EfStatisticsDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202501051054169_mig1_WriterContent.cs" />
@@ -109,6 +115,30 @@
     <Compile Include="Migrations\202503311132227_mig-contactdate.cs" />
     <Compile Include="Migrations\202503311132227_mig-contactdate.Designer.cs">
       <DependentUpon>202503311132227_mig-contactdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504011123247_mig_imagefileclass.cs" />
+    <Compile Include="Migrations\202504011123247_mig_imagefileclass.Designer.cs">
+      <DependentUpon>202504011123247_mig_imagefileclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504011214310_mig_adminclass.cs" />
+    <Compile Include="Migrations\202504011214310_mig_adminclass.Designer.cs">
+      <DependentUpon>202504011214310_mig_adminclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504011711302_mig-messsageclass_isread.cs" />
+    <Compile Include="Migrations\202504011711302_mig-messsageclass_isread.Designer.cs">
+      <DependentUpon>202504011711302_mig-messsageclass_isread.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504011825213_mig-aboutentity_isactive.cs" />
+    <Compile Include="Migrations\202504011825213_mig-aboutentity_isactive.Designer.cs">
+      <DependentUpon>202504011825213_mig-aboutentity_isactive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504012038595_mig-skillclass.cs" />
+    <Compile Include="Migrations\202504012038595_mig-skillclass.Designer.cs">
+      <DependentUpon>202504012038595_mig-skillclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504012042061_updateskillclass.cs" />
+    <Compile Include="Migrations\202504012042061_updateskillclass.Designer.cs">
+      <DependentUpon>202504012042061_updateskillclass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,6 +183,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202503311132227_mig-contactdate.resx">
       <DependentUpon>202503311132227_mig-contactdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504011123247_mig_imagefileclass.resx">
+      <DependentUpon>202504011123247_mig_imagefileclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504011214310_mig_adminclass.resx">
+      <DependentUpon>202504011214310_mig_adminclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504011711302_mig-messsageclass_isread.resx">
+      <DependentUpon>202504011711302_mig-messsageclass_isread.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504011825213_mig-aboutentity_isactive.resx">
+      <DependentUpon>202504011825213_mig-aboutentity_isactive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504012038595_mig-skillclass.resx">
+      <DependentUpon>202504012038595_mig-skillclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504012042061_updateskillclass.resx">
+      <DependentUpon>202504012042061_updateskillclass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

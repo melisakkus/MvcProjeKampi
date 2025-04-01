@@ -23,6 +23,8 @@ namespace BusinessLayer.Abstract
         int TReceivedMessageCount();
         int TDraftsCount();
         int TDeletedCount();
+        int TReadCount();
+        int TNotReadCount();
 
     }
 }

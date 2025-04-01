@@ -60,16 +60,28 @@ to get the desired effect
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview">
-                            <a href="/AdminCategory/Index" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+    with font-awesome or any other icon font library -->
+                        @if (User.IsInRole("B"))
+                        {
+                            <li class="nav-item has-treeview">
+                                <a href="/AdminCategory/Index" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Kategoriler
+                                    </p>
+                                </a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a href="/AdminSkills/Index" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Kategoriler
+                                    Profil Bilgileri
                                 </p>
                             </a>
-
                         </li>
+
                         <li class="nav-item">
                             <a href="/AdminHeading/Index" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -139,14 +151,6 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="/AdminContent/Index" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Yazılar
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="pages/calendar.html" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
@@ -156,7 +160,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/Gallery/Index/" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -188,45 +192,45 @@ to get the desired effect
                             </a>
                         </li>
                     </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
 
-            <!-- Main content -->
-            <div class="content">
-                @RenderBody()
-                <!-- /.container-fluid -->
+                <!-- Main content -->
+                <div class="content">
+                    @RenderBody()
+                    <!-- /.container-fluid -->
+                </div>
+                <!-- /.content -->
             </div>
-            <!-- /.content -->
+            <!-- /.content-wrapper -->
         </div>
-        <!-- /.content-wrapper -->
-    </div>
-    <!-- ./wrapper -->
-    <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE -->
-    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+        <!-- ./wrapper -->
+        <!-- REQUIRED SCRIPTS -->
+        <!-- jQuery -->
+        @*<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
+        <!-- Bootstrap -->
+        <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE -->
+        <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
 
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
-    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
-    <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
-    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- Page Script -->
-    <script>
-        $(function () {
-            //Add text editor
-            $('#compose-textarea').summernote().noConflict;
-        })
-    </script>
-</body>
+        <!-- OPTIONAL SCRIPTS -->
+        <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+        <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+        <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+        <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- Page Script -->
+        <script>
+            $(function () {
+                //Add text editor
+                $('#compose-textarea').summernote().noConflict;
+            })
+        </script>
+    </body>
 </html>
 

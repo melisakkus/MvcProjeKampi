@@ -82,5 +82,15 @@ namespace BusinessLayer.Concrete
         {
             return _messageDal.DeletedCount();
         }
+
+        public int TReadCount()
+        {
+            return _messageDal.ReadCount();
+        }
+
+        public int TNotReadCount()
+        {
+            return _messageDal.NotReadCount();
+        }
     }
 }

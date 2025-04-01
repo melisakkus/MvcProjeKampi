@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="modal-header">
+    <h2 class="modal-title">Hakkımızda Metin Güncelleme</h2>
+</div>
+<form method="post">
+    <div class="modal-body">
+        <input type="hidden" name="AboutId" value="@Model.AboutId" />
+        <label>Hakkımda Metin 1</label>
+        <input type="text" value="@Model.AboutDetails1" name="AboutDetails1" class="form-control" />
+        <br />
+        <label>Hakkımda Metin 2</label>
+        <input type="text" value="@Model.AboutDetails2" name="AboutDetails2" class="form-control" />
+        <br />
+        <label>Hakkımda Görsel 1</label>
+        <input type="text" value="@Model.AboutImage1" name="AboutImage1" class="form-control" />
+        <br />
+        <label>Hakkımda Görsel 2</label>
+        <input type="text" value="@Model.AboutImage2" name="AboutImage2" class="form-control" />
+        <br />
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+        </div>
+    </div>
+</form>

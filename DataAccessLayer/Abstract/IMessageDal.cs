@@ -14,5 +14,7 @@ namespace DataAccessLayer.Abstract
         int ReceivedMessageCount();
         int DraftsCount();
         int DeletedCount();
+        int ReadCount();
+        int NotReadCount();
     }
 }
