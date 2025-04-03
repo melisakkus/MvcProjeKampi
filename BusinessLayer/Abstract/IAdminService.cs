@@ -9,8 +9,19 @@ namespace BusinessLayer.Abstract
 {
     public interface IAdminService
     {
-        Admin TCheckUserNamePassword(string username, string password);
+        List<Admin> TAdminList();
+
+        Admin TGetAdmin(int id);
+        void TAddAdmin(Admin admin);
+        void TRemoveAdmin(Admin admin);
+        void TUpdateAdmin(Admin admin);
+
+
+
         Admin TGetAdminByUserName(string username);
 
+        void THashExistingPassword();
+        string THashNewPassword(string password);
+        bool TVerifyPassword(string hashedPassword, string enteredPassword);
     }
 }

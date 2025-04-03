@@ -141,6 +141,7 @@
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminContentController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminDraftController.cs" />
     <Compile Include="Controllers\AdminHeadingController.cs" />
     <Compile Include="Controllers\AdminMessageController.cs" />
@@ -214,6 +215,8 @@
     <Content Include="AdminLTE-3.0.4\dist\img\credit\paypal2.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\credit\visa.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\default-150x150.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\forum.jpg" />
+    <Content Include="AdminLTE-3.0.4\dist\img\forum2.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\icons.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\photo1.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\photo2.png" />
@@ -224,6 +227,7 @@
     <Content Include="AdminLTE-3.0.4\dist\img\prod-3.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\prod-4.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\prod-5.jpg" />
+    <Content Include="AdminLTE-3.0.4\dist\img\proje.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\user1-128x128.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\user2-160x160.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\user3-128x128.jpg" />
@@ -338,6 +342,7 @@
     <Content Include="AdminLTE-3.0.4\login-form-19\css\bootstrap\_media.css" />
     <Content Include="AdminLTE-3.0.4\login-form-19\css\style.css" />
     <Content Include="AdminLTE-3.0.4\login-form-19\images\bg.jpg" />
+    <Content Include="AdminLTE-3.0.4\login-form-19\images\picture.jpg" />
     <Content Include="AdminLTE-3.0.4\login-form-19\index.html" />
     <Content Include="AdminLTE-3.0.4\login-form-19\js\bootstrap.min.js" />
     <Content Include="AdminLTE-3.0.4\login-form-19\js\jquery.min.js" />
@@ -2020,6 +2025,7 @@
     <Content Include="AdminLTE-3.0.4\starter.html" />
     <Content Include="AdminLTE-3.0.4\web\css\style.css" />
     <Content Include="AdminLTE-3.0.4\web\images\5.jpg" />
+    <Content Include="AdminLTE-3.0.4\web\images\image2.jpg" />
     <Content Include="AdminLTE-3.0.4\web\images\img1.jpg" />
     <Content Include="AdminLTE-3.0.4\web\images\sprite.png" />
     <Content Include="AdminLTE-3.0.4\web\index.html" />
@@ -2472,6 +2478,7 @@
     <Content Include="Views\Login\AdminLogin.cshtml" />
     <Content Include="Views\AdminAbout\UpdateAbout.cshtml" />
     <Content Include="Views\AdminSkills\Index.cshtml" />
+    <Content Include="Views\Admin\AddNewAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

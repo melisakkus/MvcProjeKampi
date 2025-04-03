@@ -4,6 +4,7 @@ using BusinessLayer.ValidationRules_Fluent;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,15 +30,18 @@ namespace MvcProjeKampi.Controllers
             var results = loginValidator.Validate(admin);
             if (results.IsValid)
             {
-                var value = adminManager.TCheckUserNamePassword(admin.AdminUserName, admin.AdminPassword);
-                if (value != null)
+                var data = adminManager.TGetAdminByUserName(admin.AdminUserName);
+                if (data != null)
                 {
-                    FormsAuthentication.SetAuthCookie(value.AdminUserName,false);
-                    Session["AdminUserName"] = value.AdminUserName;
-                    return RedirectToAction("Index", "AdminCategory");
-                }
-                ModelState.AddModelError("AdminPassword", "Kullanıcı Adı veya Şifre Hatalı");
-                return View(admin);
+                    if (adminManager.TVerifyPassword(data.AdminPassword, admin.AdminPassword))
+                    {
+                        FormsAuthentication.SetAuthCookie(data.AdminUserName, false);
+                        Session["AdminUserName"] = data.AdminUserName;
+                        return RedirectToAction("Index", "AdminStatistics");
+                    }
+                    ModelState.AddModelError("AdminPassword", "Kullanıcı Adı veya Şifre Hatalı");
+                    return View(admin);
+                }                
             }
             foreach (var item in results.Errors)
             {

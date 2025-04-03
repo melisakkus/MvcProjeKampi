@@ -11,7 +11,6 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int SkillId { get; set; }
-        public string GithubName { get; set; }
         public string SkillName { get; set; }
         public int SkillPoint { get; set; }
     }

@@ -18,16 +18,16 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">MVC Proje Kampı Admin Girişi</h2>
+                    <h2 class="heading-section">MVC Proje Kampı Admin Kayıt Sayfası</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap py-5">
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/picture.jpg);"></div>
-                        <h3 class="text-center mb-0">Hoş Geldiniz</h3>
-                        <p class="text-center">Lütfen bilgilerinizi giriniz</p>
-                        <form action="AdminLogin" method="post" class="login-form">
+                        <h3 class="text-center mb-0">Hoş Geldİnİz</h3>
+                        <p class="text-center">Lütfen kayıt bilgilerinizi giriniz</p>
+                        <form action="AddNewAdmin" method="post" class="login-form">
                             <div class="form-group">
                                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
                                 @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
@@ -38,24 +38,18 @@
                                 @Html.PasswordFor(x => x.AdminPassword, new { @class = "form-control", placeholder = "*********" })
                                 @Html.ValidationMessageFor(x => x.AdminPassword, "", new { @class = "text-danger" })
                             </div>
-                            <div class="form-group d-md-flex">
-                                <div class="w-100 text-md-right">
-                                    <a href="#">Şifremi Unuttum</a>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
+                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Kayıt Ol</button>
                             </div>
                         </form>
                         <div class="w-100 text-center mt-4 text">
                             <a href="#">Ana Sayfaya Dön</a>
                         </div>
-                        <br />
+                        <br/>
                         <div class="text-center">
-                            <a href="/Admin/AddNewAdmin" class="btn btn-outline-light">Hesabınız yok mu? Kaydolun</a>
+                            <a href="/Login/AdminLogin" class="btn btn-outline-light">Giriş Sayfasına Dön</a>
                         </div>
-                        <br />
 
                     </div>
                 </div>

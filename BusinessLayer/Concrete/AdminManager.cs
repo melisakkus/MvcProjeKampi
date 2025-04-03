@@ -18,16 +18,50 @@ namespace BusinessLayer.Concrete
             _adminDal = adminDal;
         }
 
-        public Admin TCheckUserNamePassword(string username, string password)
+        public void TAddAdmin(Admin admin)
         {
-            var admin = _adminDal.CheckUserNamePassword(username, password);
-            return admin;
+            _adminDal.Insert(admin);
+        }
+
+        public List<Admin> TAdminList()
+        {
+            return _adminDal.List();
+        }
+
+        public Admin TGetAdmin(int id)
+        {
+            return _adminDal.Get(x => x.AdminId == id);
         }
 
         public Admin TGetAdminByUserName(string username)
         {
             var admin = _adminDal.GetAdminByUserName(username);
             return admin;
+        }
+
+        public void THashExistingPassword()
+        {
+            _adminDal.HashExistingPassword();
+        }
+
+        public string THashNewPassword(string password)
+        {
+            return _adminDal.HashNewPassword(password);
+        }
+
+        public void TRemoveAdmin(Admin admin)
+        {
+            _adminDal.Delete(admin);
+        }
+
+        public void TUpdateAdmin(Admin admin)
+        {
+            _adminDal.Update(admin);
+        }
+
+        public bool TVerifyPassword(string hashedPassword, string enteredPassword)
+        {
+            return _adminDal.VerifyPassword(hashedPassword, enteredPassword);
         }
     }
 }

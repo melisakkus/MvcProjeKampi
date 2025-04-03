@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IAdminDal
+    public interface IAdminDal : IRepository<Admin>
     {
-        Admin CheckUserNamePassword(string username, string password);
         Admin GetAdminByUserName(string username);
+        void HashExistingPassword();
+        string HashNewPassword(string password);
+        bool VerifyPassword(string hashedPassword, string enteredPassword);
     }
 }
