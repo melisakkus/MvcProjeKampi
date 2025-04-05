@@ -1,11 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -33,44 +29,39 @@ namespace BusinessLayer.Concrete
             return _messageDal.Get(x=>x.MessageId == id);
         }
 
-        public List<Message> GetListDeleteds()
+        public List<Message> GetListDeleteds(string sessionMail)
         {
-            return _messageDal.List(x=>x.IsDeleted==true);
+            return _messageDal.List(x=>x.SenderMail == sessionMail || x.ReceiverMail==sessionMail && x.IsDeleted==true);
         }
 
-        public List<Message> GetListDrafts()
+        public List<Message> GetListDrafts(string sessionMail)
         {
-            return _messageDal.List(x => x.IsDraft == true);
+            return _messageDal.List(x => x.IsDraft == true && x.SenderMail == sessionMail);
         }
 
-        public List<Message> GetListTrashes()
+        public List<Message> GetListInbox(string receiverMail)
         {
-            return _messageDal.List(x => x.IsDeleted == true);
+            return _messageDal.List(x=>x.ReceiverMail== receiverMail && x.IsDeleted == false && x.IsDraft == false);
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListSendbox(string senderMail)
         {
-            return _messageDal.List(x=>x.ReceiverMail=="admin@gmail.com" && x.IsDeleted == false && x.IsDraft == false);
+            return _messageDal.List(x => x.SenderMail == senderMail && x.IsDraft == false && x.IsDeleted==false);
         }
 
-        public List<Message> GetListSendbox()
+        public int TDraftsCount(string sessionMail)
         {
-            return _messageDal.List(x => x.SenderMail == "admin@gmail.com" && x.IsDraft == false && x.IsDeleted==false);
+            return _messageDal.DraftsCount( sessionMail);
         }
 
-        public int TDraftsCount()
+        public int TReceivedMessageCount(string sessionMail)
         {
-            return _messageDal.DraftsCount();
+            return _messageDal.ReceivedMessageCount(sessionMail);
         }
 
-        public int TReceivedMessageCount()
+        public int TSendMessageCount(string sessionMail)
         {
-            return _messageDal.ReceivedMessageCount();
-        }
-
-        public int TSendMessageCount()
-        {
-            return _messageDal.SendMessageCount();
+            return _messageDal.SendMessageCount(sessionMail);
         }
 
         public void Update(Message message)
@@ -78,19 +69,19 @@ namespace BusinessLayer.Concrete
             _messageDal.Update(message);    
         }
 
-        public int TDeletedCount()
+        public int TDeletedCount(string sessionMail)
         {
-            return _messageDal.DeletedCount();
+            return _messageDal.DeletedCount(sessionMail);
         }
 
-        public int TReadCount()
+        public int TReadCount(string sessionMail)
         {
-            return _messageDal.ReadCount();
+            return _messageDal.ReadCount(sessionMail);
         }
 
-        public int TNotReadCount()
+        public int TNotReadCount(string sessionMail)
         {
-            return _messageDal.NotReadCount();
+            return _messageDal.NotReadCount(sessionMail);
         }
     }
 }

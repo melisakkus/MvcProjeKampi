@@ -9,5 +9,9 @@ namespace DataAccessLayer.Abstract
 {
     public interface IWriterDal : IRepository<Writer>
     {
+        Writer GetWriterByMail(string mail);          
+        void HashExistingPassword();
+        string HashNewPassword(string password);
+        bool VerifyPassword(string hashedPassword, string enteredPassword);
     }
 }

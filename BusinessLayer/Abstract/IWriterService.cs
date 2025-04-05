@@ -14,5 +14,10 @@ namespace BusinessLayer.Abstract
         void WriterDelete(Writer writer);
         void WriterUpdate(Writer writer);
         Writer GetById(int id);
+
+        Writer GetWriterByMail(string mail);
+        void HashExistingPassword();
+        string HashNewPassword(string password);
+        bool VerifyPassword(string hashedPassword, string enteredPassword);
     }
 }

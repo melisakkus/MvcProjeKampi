@@ -28,10 +28,11 @@ namespace MvcProjeKampi.Controllers
 
         public PartialViewResult OptionsSidebar()
         {
-            ViewBag.SendMessageCount = messageManager.TSendMessageCount();
-            ViewBag.ReceivedMessageCount = messageManager.TReceivedMessageCount();
-            ViewBag.DraftsCount = messageManager.TDraftsCount();
-            ViewBag.DeletedCount = messageManager.TDeletedCount();
+            string sessionMail = (string)Session["WriterMail"];
+            ViewBag.SendMessageCount = messageManager.TSendMessageCount(sessionMail);
+            ViewBag.ReceivedMessageCount = messageManager.TReceivedMessageCount(sessionMail);
+            ViewBag.DraftsCount = messageManager.TDraftsCount(sessionMail);
+            ViewBag.DeletedCount = messageManager.TDeletedCount(sessionMail);
             ViewBag.ContactCount = contactManager.TContactCount();
             return PartialView();
         }

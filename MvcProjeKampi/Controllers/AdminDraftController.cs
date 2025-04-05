@@ -20,7 +20,8 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Index()
         {
-            var values = messageService.GetListDrafts();
+            string sessionMail = (string)Session["WriterMail"];
+            var values = messageService.GetListDrafts(sessionMail);
             return View(values);
         }
 

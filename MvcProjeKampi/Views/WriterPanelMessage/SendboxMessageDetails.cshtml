@@ -1,0 +1,77 @@
+﻿@model EntityLayer.Concrete.Message
+@{
+    ViewBag.Title = "SendboxMessageDetails";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mesaj</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                @Html.Action("OptionsSidebar", "WriterPanelMessage")
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Gönderilen Mesaj İçeriği</h3>
+
+                            <div class="card-tools">
+                                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
+                                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="mailbox-read-info">
+                                <h5>Konu : @Model.Subject</h5>
+                                <h6>
+                                    Alıcı : @Model.ReceiverMail
+                                    <span class="mailbox-read-time float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</span>
+                                </h6>
+                            </div>
+                        </div>
+                        <!-- /.mailbox-controls -->
+                        <div class="mailbox-read-message">
+                            <p>
+                                @Html.Raw(@Model.MessageContent)
+                            </p>
+                        </div>
+                        <!-- /.mailbox-read-message -->
+                        <div class="card-footer">
+                            <div class="float-right">
+                                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Yanıtla</button>
+                                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Yönlendir</button>
+                            </div>
+                            <a href="/WriterPanelMessage/DeleteMessage/@Model.MessageId" button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</a>
+                            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Yazdır</button>
+                        </div>
+                        <!-- /.card-footer -->
+                    </div>
+
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- /.card-footer -->
+    </section>
+</body>
+</html>
+
+

@@ -282,6 +282,10 @@
     <Compile Include="Migrations\202504031148431_mig-adminclass.Designer.cs">
       <DependentUpon>202504031148431_mig-adminclass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504051825579_mig-writerclassupdate.cs" />
+    <Compile Include="Migrations\202504051825579_mig-writerclassupdate.Designer.cs">
+      <DependentUpon>202504051825579_mig-writerclassupdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504031148431_mig-adminclass.resx">
       <DependentUpon>202504031148431_mig-adminclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504051825579_mig-writerclassupdate.resx">
+      <DependentUpon>202504051825579_mig-writerclassupdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

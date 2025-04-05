@@ -47,5 +47,10 @@ namespace BusinessLayer.Concrete
         {
             _contentDal.Delete(model);
         }
+
+        public List<Content> GetListByWriter(int id)
+        {
+           return _contentDal.List(x => x.WriterId == id);
+        }
     }
 }

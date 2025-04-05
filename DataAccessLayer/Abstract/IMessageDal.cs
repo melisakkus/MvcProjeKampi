@@ -10,11 +10,11 @@ namespace DataAccessLayer.Abstract
 {
     public interface IMessageDal : IRepository<Message>
     {
-        int SendMessageCount();
-        int ReceivedMessageCount();
-        int DraftsCount();
-        int DeletedCount();
-        int ReadCount();
-        int NotReadCount();
+        int SendMessageCount(string sessionMail);
+        int ReceivedMessageCount(string sessionMail);
+        int DraftsCount(string sessionMail);
+        int DeletedCount(string sessionMail);
+        int ReadCount(string sessionMail);
+        int NotReadCount(string sessionMail);
     }
 }

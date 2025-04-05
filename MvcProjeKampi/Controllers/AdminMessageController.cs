@@ -22,9 +22,10 @@ namespace MvcProjeKampi.Controllers
         }
         public ActionResult Inbox()
         {
-            ViewBag.ReadCount = messageService.TReadCount();
-            ViewBag.NotReadCount = messageService.TNotReadCount();
-            var values = messageService.GetListInbox();
+            string sessionMail = (string)Session["WriterMail"];
+            ViewBag.ReadCount = messageService.TReadCount(sessionMail);
+            ViewBag.NotReadCount = messageService.TNotReadCount(sessionMail);
+            var values = messageService.GetListInbox(sessionMail);
             return View(values);
         }
 
@@ -52,7 +53,8 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Sendbox()
         {
-            var values = messageService.GetListSendbox();
+            var sessionValue = (string)Session["WriterMail"];
+            var values = messageService.GetListSendbox(sessionValue);
             return View(values);
         }
         public ActionResult SendboxMessageDetails(int id)

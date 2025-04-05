@@ -14,6 +14,7 @@ namespace BusinessLayer.ValidationRules_Fluent
         {
             RuleFor(x=>x.AdminUserName).NotEmpty().WithMessage("Kullanıcı Adı Boş Geçilemez");
             RuleFor(x=>x.AdminPassword).NotEmpty().WithMessage("Şifre Boş Geçilemez");
+
         }
     }
 }

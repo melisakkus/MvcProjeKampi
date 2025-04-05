@@ -13,7 +13,8 @@ namespace MvcProjeKampi.Controllers
         
         public ActionResult Index()
         {
-            var values = messageService.GetListTrashes();
+            string sessionMail = (string)Session["WriterMail"];
+            var values = messageService.GetListDeleteds(sessionMail);
             return View(values);
         }
     }

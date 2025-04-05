@@ -28,6 +28,12 @@ namespace BusinessLayer.Concrete
             return _headingDal.List();
         }
 
+        //yazarın açtığı başlıkları listelemek için
+        public List<Heading> GetListByWriter(int id)
+        {
+            return _headingDal.List(x=>x.WriterId == id);
+        }
+
         public void HeadingAdd(Heading heading)
         {
             _headingDal.Insert(heading);

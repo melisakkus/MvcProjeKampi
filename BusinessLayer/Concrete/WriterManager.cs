@@ -28,6 +28,26 @@ namespace BusinessLayer.Concrete
             return _writerDal.List();
         }
 
+        public Writer GetWriterByMail(string mail)
+        {
+            return _writerDal.GetWriterByMail(mail);
+        }
+
+        public void HashExistingPassword()
+        {
+            _writerDal.HashExistingPassword();
+        }
+
+        public string HashNewPassword(string password)
+        {
+            return _writerDal.HashNewPassword(password);
+        }
+
+        public bool VerifyPassword(string hashedPassword, string enteredPassword)
+        {
+            return _writerDal.VerifyPassword(hashedPassword, enteredPassword);
+        }
+
         public void WriterAdd(Writer writer)
         {
             _writerDal.Insert(writer);

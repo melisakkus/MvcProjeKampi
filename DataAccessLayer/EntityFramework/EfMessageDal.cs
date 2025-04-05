@@ -12,34 +12,34 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfMessageDal : GenericRepository<Message>, IMessageDal
     {
-        public int DraftsCount()
+        public int DraftsCount(string sessionMail)
         {
-            return _object.Count(x => x.SenderMail == "admin@gmail.com" && x.IsDeleted == false && x.IsDraft == true);
+            return _object.Count(x => x.SenderMail == sessionMail && x.IsDeleted == false && x.IsDraft == true);
         }
 
-        public int DeletedCount()
+        public int DeletedCount(string sessionMail)
         {
-            return _object.Count(x => (x.ReceiverMail == "admin@gmail.com" || x.SenderMail == "admin@gmail.com") && x.IsDeleted == true && x.IsDraft == false);
+            return _object.Count(x =>x.ReceiverMail == sessionMail || x.SenderMail == sessionMail && x.IsDeleted == true && x.IsDraft == false);
         }
 
-        public int ReceivedMessageCount()
+        public int ReceivedMessageCount(string sessionMail)
         {
-            return _object.Count(x => x.ReceiverMail == "admin@gmail.com" && x.IsDeleted == false);
+            return _object.Count(x => x.ReceiverMail == sessionMail && x.IsDeleted == false);
         }
 
-        public int SendMessageCount()
+        public int SendMessageCount(string sessionMail)
         {
-            return _object.Count(x => x.SenderMail == "admin@gmail.com" && x.IsDeleted == false && x.IsDraft == false);
+            return _object.Count(x => x.SenderMail == sessionMail && x.IsDeleted == false && x.IsDraft == false);
         }
 
-        public int ReadCount()
+        public int ReadCount(string sessionMail)
         {
-            return _object.Count(x => x.ReceiverMail == "admin@gmail.com" && x.IsRead == true && x.IsDraft == false && x.IsDeleted == false );
+            return _object.Count(x => x.ReceiverMail == sessionMail && x.IsRead == true && x.IsDraft == false && x.IsDeleted == false );
         }
 
-        public int NotReadCount()
+        public int NotReadCount(string sessionMail)
         {
-            return _object.Count(x => x.ReceiverMail == "admin@gmail.com" && x.IsRead == false && x.IsDraft == false && x.IsDeleted == false);
+            return _object.Count(x => x.ReceiverMail == sessionMail && x.IsRead == false && x.IsDraft == false && x.IsDeleted == false);
         }
     }
 }
