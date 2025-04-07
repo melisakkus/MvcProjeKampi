@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+using BusinessLayer.ValidationRules_Fluent;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -14,11 +17,36 @@ namespace MvcProjeKampi.Controllers
         HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
         ICategoryService _categoryManager = new CategoryManager(new EfCategoryDal());
         IWriterService _writerManager = new WriterManager(new EfWriterDal());
+        WriterValidator validator = new WriterValidator();
 
         public ActionResult WriterProfile()
         {
-            return View();
+            var writer = _writerManager.GetWriterByMail((string)Session["WriterMail"]);
+            ViewBag.writerId = writer.WriterId;
+            return View(writer);
         }
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            WriterValidator validator = new WriterValidator();
+            var results = validator.Validate(writer);
+            if (results.IsValid)
+            {
+
+                _writerManager.WriterUpdate(writer);
+                return RedirectToAction("MyHeading");
+            }
+            else
+            {
+                foreach (var error in results.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return View(writer);
+            }
+        }
+
+
 
         #region Headings
         public ActionResult MyHeading()
@@ -27,6 +55,12 @@ namespace MvcProjeKampi.Controllers
             var writerId = _writerManager.GetWriterByMail(sessionValue).WriterId;
             var values = headingManager.GetListByWriter(writerId);
             return View(values);
+        }
+
+        public ActionResult AllHeading(int p = 1)
+        {
+            var headings = headingManager.GetList().ToPagedList(p,5);
+            return View(headings);
         }
 
         public ActionResult NewHeading()

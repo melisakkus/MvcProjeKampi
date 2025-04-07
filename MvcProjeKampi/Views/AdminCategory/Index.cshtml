@@ -1,7 +1,13 @@
-﻿@model List<EntityLayer.Concrete.Category>
+﻿@model PagedList.IPagedList<EntityLayer.Concrete.Category>
+@using PagedList
+@using PagedList.Mvc
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    int count = (Model.PageNumber * 6) - 6;
 }
 <br />
 <div class="text-center">
@@ -18,8 +24,9 @@
     </tr>
     @foreach (var item in Model)
     {
+        count++;
         <tr>
-            <td>@item.CategoryId</td>
+            <td>@count</td>
             <td>@item.CategoryName</td>
             <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-outline-danger">Sil</a></td>
             <td><a href="/AdminCategory/UpdateCategory/@item.CategoryId" class="btn btn-outline-warning">Güncelle</a></td>
@@ -30,4 +37,12 @@
 </table>
 <div class="text-center">
     <a href="/AdminCategory/AddCategory" class="btn btn-outline-dark">Yeni Kategori</a>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
 </div>

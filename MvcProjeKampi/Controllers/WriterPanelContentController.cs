@@ -24,5 +24,23 @@ namespace MvcProjeKampi.Controllers
             return View(contents);
         }
 
+        [HttpGet]
+        public ActionResult AddContent(int id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddContent(Content newContent)
+        {
+            string parametre = (string)Session["WriterMail"];
+            var writergetbymail = writerService.GetWriterByMail(parametre);            
+            newContent.WriterId = writergetbymail.WriterId;
+            newContent.ContentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            newContent.ContentStatus = true;
+            contentManager.ContentAddBL(newContent);
+            return RedirectToAction("MyContent");
+
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace MvcProjeKampi.Controllers
             model.IsDraft = true;
             model.IsDeleted = false;
             model.MessageDate = DateTime.Now;
-            model.SenderMail = "admin@gmail.com";
+            model.SenderMail = (string)Session["WriterMail"];
             messageService.Add(model);
             return RedirectToAction("Index");
         }

@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules_Fluent;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace MvcProjeKampi.Controllers
     {
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
         
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var values = categoryManager.GetList();
+            var values = categoryManager.GetList().ToPagedList(p,6);
             return View(values);
         }
 

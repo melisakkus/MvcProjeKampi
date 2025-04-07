@@ -16,6 +16,13 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
 
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("HeadingsDefaultLayout", "Default");
+        }
+
         #region Admin Login
         IAdminService adminManager = new AdminManager(new EfAdminDal());
         LoginValidator loginValidator = new LoginValidator();
@@ -109,5 +116,7 @@ namespace MvcProjeKampi.Controllers
             return RedirectToAction("WriterLogin", "Login");
         }
         #endregion
+
+
     }
 }

@@ -2,10 +2,10 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
@@ -15,9 +15,9 @@ namespace MvcProjeKampi.Controllers
         IHeadingService _headingManager = new HeadingManager(new EfHeadingDal());
         ICategoryService _categoryManager = new CategoryManager(new EfCategoryDal());
         IWriterService _writerManager = new WriterManager(new EfWriterDal());
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var values = _headingManager.GetList();
+            var values = _headingManager.GetList().ToPagedList(p,5);
             return View(values);
         }
 
