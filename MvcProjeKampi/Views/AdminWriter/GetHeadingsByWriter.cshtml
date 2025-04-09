@@ -1,12 +1,16 @@
-﻿@model List<EntityLayer.Concrete.Content>
+﻿@model List<EntityLayer.Concrete.Heading>
+
 @{
-    ViewBag.Title = "MyContent";
-    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+    ViewBag.Title = "GetHeadingsByWriter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
 <html>
-
+<div class="text-center">
+    <h4>Yazarın Açtığı Başlıklar</h4>
+</div>
+<br />
 <body class="hold-transition sidebar-mini">
     <div class="container-fluid mt-0"
         <div class="col-md-9">
@@ -23,7 +27,7 @@
                                     <!-- timeline time label -->
                                     <div class="time-label">
                                         <span class="bg-danger">
-                                            @(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy")) - @item.Writer.WriterName @item.Writer.WriterSurName
+                                            @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy")) - @item.Writer.WriterName @item.Writer.WriterSurName
                                         </span>
                                     </div>
                                     <!-- /.timeline-label -->
@@ -31,9 +35,9 @@
                                     <div>
                                         <i class="fas fa-envelope bg-primary"></i>
                                         <div class="timeline-item">
-                                            <h3 class="timeline-header"><a href="#"> @item.Heading.HeadingName</a></h3>
+                                            <h3 class="timeline-header"><a href="#"> @item.Category.CategoryName</a></h3>
                                             <div class="timeline-body">
-                                                @item.ContentValue
+                                                @item.HeadingName
                                             </div>
                                         </div>
                                     </div>
@@ -51,4 +55,6 @@
         </div>
 </body>
 </html>
+
+
 

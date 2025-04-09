@@ -17,5 +17,8 @@ namespace BusinessLayer.Abstract
 
         List<Content> GetListByHeadingId(int id);
         List<Content> GetListByWriter(int id);
+        List<Content> GetSearchContents(string searchValue);
+        List<Content> GetLast();
+
     }
 }

@@ -1,67 +1,48 @@
 ﻿@model EntityLayer.Concrete.Admin
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<br />
 
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Mvc Kamp Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/AdminLTE-3.0.4/login-form-19/css/style.css">
-</head>
-<body>
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">MVC Proje Kampı Admin Kayıt Sayfası</h2>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="login-wrap py-5">
-                        <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/picture.jpg);"></div>
-                        <h3 class="text-center mb-0">Hoş Geldİnİz</h3>
-                        <p class="text-center">Lütfen kayıt bilgilerinizi giriniz</p>
-                        <form action="AddNewAdmin" method="post" class="login-form">
-                            <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-                                @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
-                                @Html.ValidationMessageFor(x => x.AdminUserName, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-                                @Html.PasswordFor(x => x.AdminPassword, new { @class = "form-control", placeholder = "*********" })
-                                @Html.ValidationMessageFor(x => x.AdminPassword, "", new { @class = "text-danger" })
-                            </div>
-                            <div class="form-group">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Kayıt Ol</button>
-                            </div>
-                        </form>
-                        <div class="w-100 text-center mt-4 text">
-                            <a href="#">Ana Sayfaya Dön</a>
-                        </div>
-                        <br/>
-                        <div class="text-center">
-                            <a href="/Login/AdminLogin" class="btn btn-outline-light">Giriş Sayfasına Dön</a>
-                        </div>
+<h1 class="text-center mb-4">Yeni Admin Ekleme Sayfası</h1>
+<br />
 
-                    </div>
-                </div>
+<form action="AddNewAdmin" method="post" class="login-form shadow-lg p-4 rounded bg-light" style="max-width: 500px; margin: 0 auto;">
+    <div class="form-group mb-3">
+        <label for="AdminUserName" class="form-label">Kullanıcı Adı</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
             </div>
+            @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
         </div>
-    </section>
+        @Html.ValidationMessageFor(x => x.AdminUserName, "", new { @class = "text-danger" })
+    </div>
 
-    <script src="~/AdminLTE-3.0.4/login-form-19/js/jquery.min.js"></script>
-    <script src="~/AdminLTE-3.0.4/login-form-19/js/popper.js"></script>
-    <script src="~/AdminLTE-3.0.4/login-form-19/js/bootstrap.min.js"></script>
-    <script src="~/AdminLTE-3.0.4/login-form-19/js/main.js"></script>
+    <div class="form-group mb-3">
+        <label for="AdminPassword" class="form-label">Şifre</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-lock"></i></span>
+            </div>
+            @Html.PasswordFor(x => x.AdminPassword, new { @class = "form-control", placeholder = "*********" })
+        </div>
+        @Html.ValidationMessageFor(x => x.AdminPassword, "", new { @class = "text-danger" })
+    </div>
 
-</body>
-</html>
+    <div class="form-group mb-3">
+        <label for="AdminRole" class="form-label">Yetki Seçiniz</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-users"></i></span>
+            </div>
+            @Html.DropDownListFor(x => x.AdminRole, new SelectList(ViewBag.Roles, "Value", "Text"), "Rol Seçin", new { @class = "form-control" })
+        </div>
+        @Html.ValidationMessageFor(x => x.AdminRole, "", new { @class = "text-danger" })
+    </div>
 
+    <div class="form-group">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <button type="submit" class="btn btn-primary btn-lg w-100 py-2">Ekle</button>
+    </div>
+</form>

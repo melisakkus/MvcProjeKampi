@@ -1,11 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -23,6 +19,11 @@ namespace BusinessLayer.Concrete
             return _statisticsDal.CategoryCount();
         }
 
+        public List<StatisticsCategory> TCategoryList()
+        {
+            return _statisticsDal.CategoryList();
+        }
+
         public int TDifferenceBtTrueFalseCategory()
         {
             return _statisticsDal.DifferenceBtTrueFalseCategory();
@@ -38,9 +39,15 @@ namespace BusinessLayer.Concrete
             return _statisticsDal.MaxCategory();
         }
 
+        public List<StatisticsWriter> TWriterContentList()
+        {
+            return _statisticsDal.WriterContentList();
+        }
+
         public int TWriterNameCountWithA()
         {
             return _statisticsDal.WriterNameCountWithA();
         }
+
     }
 }

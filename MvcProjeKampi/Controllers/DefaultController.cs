@@ -20,9 +20,14 @@ namespace MvcProjeKampi.Controllers
             return View(values);
         }
 
-        public PartialViewResult Index(int id = 0)
+        public PartialViewResult Index(int? id)
         {
-            var contentList = contentManager.GetListByHeadingId(id);
+            if (id == null)
+            {
+                var values = contentManager.GetLast();
+                return PartialView(values);
+            }
+            var contentList = contentManager.GetListByHeadingId(id.Value);
             return PartialView(contentList);
         }
     }

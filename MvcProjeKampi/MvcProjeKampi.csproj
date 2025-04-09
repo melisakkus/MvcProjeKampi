@@ -2058,6 +2058,7 @@
     <Content Include="AdminLTE-3.0.4\web-tema\css\snow.css" />
     <Content Include="AdminLTE-3.0.4\web-tema\css\style.css" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\banner.jpg" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\banner2.jpg" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\close.png" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\contact.jpg" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\exp.jpg" />
@@ -2683,6 +2684,14 @@
     <Content Include="Views\WriterPanelMessage\DraftMessage.cshtml" />
     <Content Include="Views\WriterPanelMessage\UpdateDraft.cshtml" />
     <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\AdminContent\GetAllContent.cshtml" />
+    <Content Include="Views\AdminStatistics\Statistics2.cshtml" />
+    <Content Include="Views\AdminStatistics\Statistics1.cshtml" />
+    <Content Include="Views\AdminHeading\HeadingReport.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\UpdateAdmin.cshtml" />
+    <Content Include="Views\AdminCategory\HeadingByCategory.cshtml" />
+    <Content Include="Views\AdminWriter\GetHeadingsByWriter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

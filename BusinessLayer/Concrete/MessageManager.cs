@@ -31,7 +31,7 @@ namespace BusinessLayer.Concrete
 
         public List<Message> GetListDeleteds(string sessionMail)
         {
-            return _messageDal.List(x=>(x.SenderMail == sessionMail || x.ReceiverMail==sessionMail) && x.IsDeleted==true);
+            return _messageDal.List(x=>(x.ReceiverMail==sessionMail) && x.IsDeleted==true);
         }
 
         public List<Message> GetListDrafts(string sessionMail)

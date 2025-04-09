@@ -25,7 +25,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap py-5">
                         <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/AdminLTE-3.0.4/login-form-19/images/picture.jpg);"></div>
-                        <h3 class="text-center mb-0">Hoş Geldiniz</h3>
+                        <h3 class="text-center mb-0">Hoş Geldİnİz</h3>
                         <p class="text-center">Lütfen bilgilerinizi giriniz</p>
                         <form action="AdminLogin" method="post" class="login-form">
                             <div class="form-group">
@@ -43,19 +43,25 @@
                                     <a href="#">Şifremi Unuttum</a>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
-                            </div>
+                            @if (ViewBag.ErrorMessage != null)
+                            {
+                                <div class="alert alert-danger">
+                                    @ViewBag.ErrorMessage
+                                </div>
+                            }
+                            <!-- Giriş formunun içinde, submit butonunun üstüne ekle -->
+                        <div class="form-group">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="g-recaptcha" data-sitekey="6LfSIxErAAAAANO7M-rZDfc-6OgQ5f3JDlIRWPii"></div>
+                            <br />
+                            <button type="submit" class="btn form-control btn-primary rounded submit px-3">Giriş Yap</button>
+                        </div>
                         </form>
                         <div class="w-100 text-center mt-4 text">
-                            <a href="#">Ana Sayfaya Dön</a>
+                            <a href="/Login/AdminOrWriterLogin">Menüye Dön</a>
                         </div>
                         <br />
-                        <div class="text-center">
-                            <a href="/Admin/AddNewAdmin" class="btn btn-outline-light">Hesabınız yok mu? Kaydolun</a>
-                        </div>
-                        <br />
+
 
                     </div>
                 </div>
@@ -67,6 +73,11 @@
     <script src="~/AdminLTE-3.0.4/login-form-19/js/popper.js"></script>
     <script src="~/AdminLTE-3.0.4/login-form-19/js/bootstrap.min.js"></script>
     <script src="~/AdminLTE-3.0.4/login-form-19/js/main.js"></script>
+
+    <!-- Google reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
 
 </body>
 </html>

@@ -1,11 +1,8 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
@@ -33,14 +30,38 @@ namespace DataAccessLayer.EntityFramework
 
         public Category MaxCategory()
         {
-            var category = context.Categories.OrderByDescending(x=>x.Headings.Count()).FirstOrDefault();
+            var category = context.Categories.OrderByDescending(x => x.Headings.Count()).FirstOrDefault();
             return category;
+        }
+
+        public List<StatisticsWriter> WriterContentList()
+        {
+            List<StatisticsWriter> statisticsWriters = new List<StatisticsWriter>();
+            statisticsWriters = context.Writers.Select(x => new StatisticsWriter
+            {
+                WriterName = x.WriterName + " "+ x.WriterSurName,
+                ContentCount = x.Headings.Count()
+            }).ToList();
+            return statisticsWriters;
         }
 
         public int WriterNameCountWithA()
         {
-            var values = context.Writers.Where(x => x.WriterName.Contains("a") ||x.WriterName.Contains("A")).Count();
+            var values = context.Writers.Where(x => x.WriterName.Contains("a") || x.WriterName.Contains("A")).Count();
             return values;
         }
+
+        List<StatisticsCategory> IStatisticsDal.CategoryList()
+        {
+            List<StatisticsCategory> categoryClasses = new List<StatisticsCategory>();
+            categoryClasses = context.Categories.Select(x => new StatisticsCategory
+            {
+                CategoryName = x.CategoryName,
+                CategoryCount = x.Headings.Count()
+            }).ToList();
+            return categoryClasses;
+        }
+
+
     }
 }

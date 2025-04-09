@@ -81,6 +81,8 @@
     <Compile Include="Concrete\ImageFile.cs" />
     <Compile Include="Concrete\Message.cs" />
     <Compile Include="Concrete\Skill.cs" />
+    <Compile Include="Concrete\StatisticsCategory.cs" />
+    <Compile Include="Concrete\StatisticsWriter.cs" />
     <Compile Include="Concrete\Writer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

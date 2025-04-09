@@ -17,15 +17,15 @@
         @Html.ValidationMessageFor(x => x.HeadingName, "", new { @class = "text-danger" })
         <br />
         @Html.Label("Kategori")
-        @Html.DropDownListFor(x=>x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, "Lütfen seçim yapınız.", new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.valueCategory, "Lütfen seçim yapınız.", new { @class = "form-control" })
         @Html.ValidationMessageFor(X => X.CategoryId, "", new { @class = "text-danger" })
         <br />
         @Html.Label("Yazar")
-        @Html.DropDownListFor(x=>x.WriterId,(List<SelectListItem>)ViewBag.valueWriters, "Lütfen seçim yapınız.", new { @class = "form-control" })
+        @Html.DropDownListFor(x => x.WriterId, (List<SelectListItem>)ViewBag.valueWriters, "Lütfen seçim yapınız.", new { @class = "form-control" })
         @Html.ValidationMessageFor(X => X.WriterId, "", new { @class = "text-danger" })
         <br />
         <div class="text-center">
-            <button class="btn btn-outline-success">Kaydet</button>
+            <button class="btn btn-outline-success" id="btnAdd">Kaydet</button>
         </div>
     </div>
 }

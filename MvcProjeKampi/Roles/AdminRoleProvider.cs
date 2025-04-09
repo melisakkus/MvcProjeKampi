@@ -14,6 +14,11 @@ namespace MvcProjeKampi.Roles
         public override string[] GetRolesForUser(string username)
         {
             var admin = adminManager.TGetAdminByUserName(username);
+            if (admin == null)
+            {
+                return new string[] { };  // Boş bir dizi döndür
+
+            }
             return new string[] { admin.AdminRole };
         }
 

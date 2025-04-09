@@ -1,10 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using PagedList;
 using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
@@ -16,6 +13,13 @@ namespace MvcProjeKampi.Controllers
         {
             return View();
         }
+
+        public ActionResult GetAllContent(string parameter, int page=1)
+        {
+            var contents = contentManager.GetSearchContents(parameter).ToPagedList(page,6);
+            return View(contents);
+        }
+
 
         public ActionResult ContentByHeading(int headingId)
         {

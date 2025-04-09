@@ -28,7 +28,7 @@ namespace MvcProjeKampi.Controllers
 
         public PartialViewResult OptionsSidebar()
         {
-            string sessionMail = (string)Session["WriterMail"];
+            string sessionMail = (string)Session["AdminUserName"];
             ViewBag.SendMessageCount = messageManager.TSendMessageCount(sessionMail);
             ViewBag.ReceivedMessageCount = messageManager.TReceivedMessageCount(sessionMail);
             ViewBag.DraftsCount = messageManager.TDraftsCount(sessionMail);

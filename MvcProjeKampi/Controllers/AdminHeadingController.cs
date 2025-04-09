@@ -15,9 +15,16 @@ namespace MvcProjeKampi.Controllers
         IHeadingService _headingManager = new HeadingManager(new EfHeadingDal());
         ICategoryService _categoryManager = new CategoryManager(new EfCategoryDal());
         IWriterService _writerManager = new WriterManager(new EfWriterDal());
+
         public ActionResult Index(int p=1)
         {
             var values = _headingManager.GetList().ToPagedList(p,5);
+            return View(values);
+        }
+
+        public ActionResult HeadingReport()
+        {
+            var values = _headingManager.GetList();
             return View(values);
         }
 
@@ -47,6 +54,7 @@ namespace MvcProjeKampi.Controllers
         {
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             _headingManager.HeadingAdd(heading);
+            TempData["SuccessMessage"] = "Başlık başarıyla eklendi!";
             return RedirectToAction("Index");
         }
 

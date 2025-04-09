@@ -14,11 +14,18 @@ namespace MvcProjeKampi.Controllers
     public class AdminWriterController : Controller
     {
         WriterManager writerManager = new WriterManager(new EfWriterDal());
+        HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
 
         public ActionResult Index()
         {
             var values = writerManager.GetList();
             return View(values);
+        }
+
+        public ActionResult GetHeadingsByWriter(int id)
+        {
+            var headings = headingManager.GetListByWriter(id);
+            return View(headings);
         }
 
         [HttpGet]

@@ -118,17 +118,17 @@
                                     </a>
                                     @if (item.HeadingStatus == true)
                                     {
-                                        <a class="btn btn-outline-danger btn-sm" href="/AdminHeading/DeleteHeading/@item.HeadingId">
-
+                                        <a class="btn btn-outline-danger btn-sm btnPasif" href="/AdminHeading/DeleteHeading/@item.HeadingId">
                                             <i class="fas fa-minus-circle"> Pasif Yap</i>
                                         </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-danger btn-sm" href="/AdminHeading/ActivateHeading/@item.HeadingId">
+                                        <a class="btn btn-danger btn-sm btnAktif" href="/AdminHeading/ActivateHeading/@item.HeadingId">
                                             <i class="fas fa-plus-circle"> Aktif Yap</i>
                                         </a>
                                     }
+
                                 </td>
                             </tr>
                         }
@@ -156,3 +156,53 @@ LiElementClasses = new List<string>
 {"page-link"}
 })
 </div>
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).on('click', '.btnPasif', function (e) {
+        e.preventDefault(); // href'e yönlendirmeyi durdurur
+        var link = $(this).attr('href'); // linki al
+
+        Swal.fire({
+            title: "Pasif hale getirmek istediğinize emin misiniz?",
+            icon: "warning",
+            showDenyButton: true,
+            confirmButtonText: "Evet.",
+            denyButtonText: "Vazgeç."
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link; // yönlendirme
+            }
+            // else kısmına bir şey gerekmez çünkü vazgeçince hiçbir şey yapılmayacak
+        });
+    });
+
+    $(document).on('click', '.btnAktif', function (e) {
+        e.preventDefault();
+        var link = $(this).attr('href');
+
+        Swal.fire({
+            title: "Aktif hale getirmek istediğinize emin misiniz?",
+            icon: "question",
+            showDenyButton: true,
+            confirmButtonText: "Evet.",
+            denyButtonText: "Vazgeç."
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+            }
+        });
+    });
+</script>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire({
+            title: '@TempData["SuccessMessage"]',
+            icon: 'success'
+        });
+    </script>
+}

@@ -43,6 +43,11 @@ namespace BusinessLayer.Concrete
             return _contentDal.List();
         }
 
+        public List<Content> GetLast()
+        {
+            return _contentDal.List().OrderByDescending(x=>x.ContentId).Take(6).ToList();
+        }
+
         public void RemoveContent(Content model)
         {
             _contentDal.Delete(model);
@@ -51,6 +56,18 @@ namespace BusinessLayer.Concrete
         public List<Content> GetListByWriter(int id)
         {
            return _contentDal.List(x => x.WriterId == id);
+        }
+
+        public List<Content> GetSearchContents(string searchValue)
+        {
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                return _contentDal.List(x => x.ContentValue.Contains(searchValue));
+            }
+            else
+            {
+                return _contentDal.List();
+            }
         }
     }
 }

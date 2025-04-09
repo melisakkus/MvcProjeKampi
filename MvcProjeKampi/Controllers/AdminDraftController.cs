@@ -20,7 +20,7 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Index()
         {
-            string sessionMail = (string)Session["WriterMail"];
+            string sessionMail = (string)Session["AdminUserName"];
             var values = messageService.GetListDrafts(sessionMail);
             return View(values);
         }
@@ -32,7 +32,7 @@ namespace MvcProjeKampi.Controllers
             model.IsDraft = true;
             model.IsDeleted = false;
             model.MessageDate = DateTime.Now;
-            model.SenderMail = (string)Session["WriterMail"];
+            model.SenderMail = (string)Session["AdminUserName"];
             messageService.Add(model);
             return RedirectToAction("Index");
         }
@@ -75,7 +75,7 @@ namespace MvcProjeKampi.Controllers
                 message.IsDeleted = false;
                 message.IsDraft = false;
                 message.MessageDate = DateTime.Now;
-                message.SenderMail = "admin@gmail.com";
+                message.SenderMail = (string)Session["AdminUserName"];
                 messageService.Update(message);
                 return RedirectToAction("Index");
             }

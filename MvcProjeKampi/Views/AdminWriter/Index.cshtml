@@ -16,6 +16,11 @@
                 <div class="col-sm-6">
                     <h1>Yazarlar</h1>
                 </div>
+
+                <div class="col-sm-6 d-flex justify-content-end">
+                    <a href="/AdminWriter/AddWriter" class="btn btn-outline-primary">Yeni Yazar Ekle</a>
+                </div>
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -50,7 +55,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
+                                        <a href="/AdminWriter/GetHeadingsByWriter/@item.WriterId" class="btn btn-sm bg-teal">
                                             <i class="fas fa-comments">Yazarın Başlıkları</i>
                                         </a>
                                         <a href="/AdminWriter/UpdateWriter/@item.WriterId" class="btn btn-sm btn-primary">

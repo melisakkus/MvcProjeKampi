@@ -22,7 +22,7 @@ namespace MvcProjeKampi.Controllers
         }
         public ActionResult Inbox()
         {
-            string sessionMail = (string)Session["WriterMail"];
+            string sessionMail = (string)Session["AdminUserName"];
             ViewBag.ReadCount = messageService.TReadCount(sessionMail);
             ViewBag.NotReadCount = messageService.TNotReadCount(sessionMail);
             var values = messageService.GetListInbox(sessionMail);
@@ -53,7 +53,7 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Sendbox()
         {
-            var sessionValue = (string)Session["WriterMail"];
+            var sessionValue = (string)Session["AdminUserName"];
             var values = messageService.GetListSendbox(sessionValue);
             return View(values);
         }
@@ -76,7 +76,7 @@ namespace MvcProjeKampi.Controllers
             var results = validationRules.Validate(message);
             if (results.IsValid)
             {
-                message.SenderMail = "admin@gmail.com";
+                message.SenderMail = (string)Session["AdminUserName"];
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 message.IsDeleted = false;
                 message.IsDraft = false;

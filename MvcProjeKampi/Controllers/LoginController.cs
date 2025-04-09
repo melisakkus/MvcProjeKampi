@@ -3,6 +3,8 @@ using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules_Fluent;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Newtonsoft.Json.Linq;
+using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -35,6 +37,23 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult AdminLogin(Admin admin)
         {
+            var response = Request["g-recaptcha-response"];
+            const string secret = "6LfSIxErAAAAAMa1OKC5GPsfSre3woi1-t2NLneR";
+            using (var client = new WebClient())
+            {
+                var result = client.DownloadString(
+                    $"https://www.google.com/recaptcha/api/siteverify?secret={secret}&response={response}"
+                );
+                var obj = JObject.Parse(result);
+                var status = (bool)obj["success"];
+
+                if (!status)
+                {
+                    ViewBag.ErrorMessage = "Lütfen robot olmadığınızı doğrulayın.";
+                    return View();
+                }
+            }
+
             var results = loginValidator.Validate(admin);
             if (results.IsValid)
             {
@@ -77,6 +96,23 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult WriterLogin(Writer writer)
         {
+            var response = Request["g-recaptcha-response"];
+            const string secret = "6LfSIxErAAAAAMa1OKC5GPsfSre3woi1-t2NLneR";
+            using (var client = new WebClient())
+            {
+                var result2 = client.DownloadString(
+                    $"https://www.google.com/recaptcha/api/siteverify?secret={secret}&response={response}"
+                );
+                var obj = JObject.Parse(result2);
+                var status = (bool)obj["success"];
+
+                if (!status)
+                {
+                    ViewBag.ErrorMessage = "Lütfen robot olmadığınızı doğrulayın.";
+                    return View();
+                }
+            }
+
             var result = writervalidator.Validate(writer);
             if (result.IsValid)
             {

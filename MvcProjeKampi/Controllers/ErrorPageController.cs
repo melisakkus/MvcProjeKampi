@@ -5,6 +5,12 @@ namespace MvcProjeKampi.Controllers
     [AllowAnonymous]
     public class ErrorPageController : Controller
     {
+        public ActionResult Page404()
+        {
+            Response.StatusCode = 404;
+            Response.TrySkipIisCustomErrors = true;
+            return View();
+        }
 
         public ActionResult Page401()
         {
@@ -20,11 +26,6 @@ namespace MvcProjeKampi.Controllers
             return View();
         }
 
-        public ActionResult Page404()
-        {
-            Response.StatusCode = 404;
-            Response.TrySkipIisCustomErrors = true;
-            return View();
-        }
+
     }
 }

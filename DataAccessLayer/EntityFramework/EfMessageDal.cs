@@ -19,7 +19,7 @@ namespace DataAccessLayer.EntityFramework
 
         public int DeletedCount(string sessionMail)
         {
-            return _object.Count(x =>x.ReceiverMail == sessionMail || x.SenderMail == sessionMail && x.IsDeleted == true && x.IsDraft == false);
+            return _object.Count(x =>x.ReceiverMail == sessionMail && x.IsDeleted == true && x.IsDraft == false);
         }
 
         public int ReceivedMessageCount(string sessionMail)

@@ -1,9 +1,5 @@
 ﻿using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
@@ -14,5 +10,9 @@ namespace DataAccessLayer.Abstract
         int WriterNameCountWithA();
         Category MaxCategory();
         int DifferenceBtTrueFalseCategory();
+
+        List<StatisticsCategory> CategoryList();
+        List<StatisticsWriter> WriterContentList();
+
     }
 }

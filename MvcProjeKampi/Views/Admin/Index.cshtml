@@ -1,0 +1,66 @@
+﻿@model List<EntityLayer.Concrete.Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+    int count = 0;
+}
+<br />
+<div class="text-center">
+    <h4>Adminler</h4>
+</div>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Admin Kullanıcı Adı</th>
+        <th>Mevut Yetki</th>
+        <th>Yetki Değişikliği</th>
+        <th>Güncelleme</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.AdminUserName</td>
+            @if (item.AdminRole == "A")
+            {
+                <td><span class="badge bg-warning">@item.AdminRole</span></td>
+            }
+            else
+            {
+                <td><span class="badge bg-primary">@item.AdminRole</span></td>
+            }
+
+            <td>
+                @if (item.AdminRole == "A")
+                {
+                    <a href="/Admin/MakeAdminRoleB/@item.AdminId" class="btn btn-outline-primary">B Yetkisi Ver</a>
+                }
+                else if (item.AdminRole == "B")
+                {
+                    <a href="/Admin/MakeAdminRoleA/@item.AdminId" class="btn btn-outline-warning">A Yetkisi Ver</a>
+                }
+                else
+                {
+                    <a href="/Admin/MakeAdminRoleA/@item.AdminId" class="btn btn-outline-warning">A Yetkisi Ver</a>
+                    <span class="mx-2">|</span> <!-- Divider -->
+                    <a href="/Admin/MakeAdminRoleB/@item.AdminId" class="btn btn-outline-primary">B Yetkisi Ver</a>
+                }
+            </td>
+            <td>
+                <a href="/Admin/UpdateAdmin/@item.AdminId" class="btn btn-outline-dark">Güncelle</a>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<div class="text-center">
+    <br />
+    <a href="/Admin/AddNewAdmin" class="btn btn-outline-success">Yeni Admin Ekle</a>
+</div>
