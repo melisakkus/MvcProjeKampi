@@ -2057,6 +2057,13 @@
     <Content Include="AdminLTE-3.0.4\web-tema\css\simpleLightbox.css" />
     <Content Include="AdminLTE-3.0.4\web-tema\css\snow.css" />
     <Content Include="AdminLTE-3.0.4\web-tema\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\adminbaslık.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\admingelenmesajlar.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\AdminGiris.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\admingrafik.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\adminicerikler.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\adminrapor.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\AnaGiris.png" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\banner.jpg" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\banner2.jpg" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\close.png" />
@@ -2077,7 +2084,12 @@
     <Content Include="AdminLTE-3.0.4\web-tema\images\prev.png" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\serve.jpg" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\stats.jpg" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\sözlük.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\sözlükanasayfa.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\tanıtım.png" />
     <Content Include="AdminLTE-3.0.4\web-tema\images\testimonials.jpg" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\YazarGiris.png" />
+    <Content Include="AdminLTE-3.0.4\web-tema\images\yazarmesajtaslak.png" />
     <Content Include="AdminLTE-3.0.4\web-tema\index.html" />
     <Content Include="AdminLTE-3.0.4\web-tema\js\aos.js" />
     <Content Include="AdminLTE-3.0.4\web-tema\js\bootstrap.js" />
